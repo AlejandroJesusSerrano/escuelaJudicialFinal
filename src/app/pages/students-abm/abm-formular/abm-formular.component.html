@@ -1,0 +1,106 @@
+<div mat-dialog-content class="card">
+    <h1 mat-dialog-title> Nuevo Estudiante</h1>
+    <div class="formgrid grid"></div>
+    <form [formGroup]="studentsForm">
+        <mat-form-field class="field col-6">
+            <mat-label>Nombre</mat-label>
+            <input 
+                matInput
+                type="text"
+                [formControl]='nameControl'
+            >
+            <mat-error *ngFor="let error of nameControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field col-5">
+            <mat-label>Apellido</mat-label>
+            <input
+                matInput
+                type="text"
+                [formControl]="lastNameControl"
+            >
+            <mat-error *ngFor="let error of lastNameControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-6">
+            <mat-label>Email</mat-label>
+            <input
+                matInput
+                type="email"
+                placeholder="pat@example.com"
+                [formControl]="emailControl"
+            >
+            <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-5">
+            <mat-label>Contrseña</mat-label>
+            <input
+                matInput
+                type="password"
+                [formControl]="passwordControl"
+            >
+            <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-3">
+            <mat-label>Curso</mat-label>
+            <mat-select 
+            [formControl]="courseControl"
+            placeholder="Seleccione un Curso">
+                <mat-option value="Ley Yolanda">Ley Yolanda</mat-option>
+                <mat-option value="Ley Micaela">Ley Micaela</mat-option>
+                <mat-option value="PROFAMAG">PROFAMAG</mat-option>
+                <mat-option value="Capacitaciones">Capacitaciones</mat-option>
+            </mat-select>
+            <mat-error *ngFor="let error of courseControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-8">
+            <mat-label>Direccion Particular</mat-label>
+            <input
+                matInput
+                type="text"
+                [formControl]="hAddressControl"
+            >
+            <mat-error *ngFor="let error of hAddressControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-4">
+            <mat-label>Barrio</mat-label>
+            <input
+                matInput
+                type="text"
+                [formControl]="neighControl"
+            >
+            <mat-error *ngFor="let error of neighControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-4">
+            <mat-label>Ciudad</mat-label>
+            <input
+                matInput
+                type="text"
+                [formControl]="cityControl"
+            >
+            <mat-error *ngFor="let error of cityControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field> 
+
+        <mat-form-field class="field col-3">
+            <mat-label>Código Postal</mat-label>
+            <input
+                matInput
+                type="text"
+                [formControl]="zipControl"
+            >
+            <mat-error *ngFor="let error of zipControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <div mat-dialog-actions>
+            <button mat-flat-button color="primary" (click)="saveFormData()"> Guardar </button>
+            <button mat-flat-button color="warn" mat-dialog-close> Cancelar </button>
+
+        </div>
+
+    </form>
+</div>
