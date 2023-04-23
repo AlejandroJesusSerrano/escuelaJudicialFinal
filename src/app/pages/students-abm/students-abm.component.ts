@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AbmFormularComponent } from './abm-formular/abm-formular.component';
+import { DateTime, DateTimeService } from 'src/app/core/services/date-time.service';
+import { Subscription } from 'rxjs';
+
 
 
 export interface Student {
@@ -16,7 +19,7 @@ export interface Student {
   city: string;
   neighborhood: string;
   zip: string;
-}
+};
 
 @Component({
   selector: 'app-students-abm',
@@ -78,23 +81,35 @@ export class StudentsAbmComponent {
     const inputValue = (ev.target as HTMLInputElement).value;
     this.dataSource.filter = inputValue.trim().toLowerCase();
 
-  }
+  };
 
   deleteStudent(studentId: number): void {
-    
+
     const index = this.dataSource.data.findIndex(student => student.id === studentId);
-    
+
     if (index !== -1) {
-    
+
       this.dataSource.data.splice(index, 1)[0];
       this.dataSource.data = [...this.dataSource.data];
 
-    }
-  }
+    };
+  };
+
+  dateTimeNowStandard: string | null = null
+
+  subscriptionRef: Subscription | null
+
 
   constructor(
-    private formDialog: MatDialog
-  ) { }
+    private formDialog: MatDialog,
+    private dateTimeService: DateTimeService
+  ) {
+    this.subscriptionRef = this.dateTimeService.calendar.subscribe((value) => this.dateTimeNowStandard = value);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionRef?.unsubscribe();
+  }
 
   openStudentFormDialog(): void {
 
@@ -102,22 +117,22 @@ export class StudentsAbmComponent {
     const dialog = this.formDialog.open(AbmFormularComponent);
 
     dialog.afterClosed().subscribe((value) => {
-      
+
       if (value) {
-        
+
         this.dataSource.data = [...this.dataSource.data, {
           ...value,
           register_date: new Date(),
           id: this.dataSource.data.length + 1,
-          }
+        },
 
         ];
 
       }
 
-    })
-    
-  }
+    });
+
+  };
 
   editStudent(studentEdit: Student): void {
     console.log('Student edit:', studentEdit)
@@ -128,7 +143,7 @@ export class StudentsAbmComponent {
         studentEdit
       }
 
-    })
+    });
 
     dialog.afterClosed().subscribe((dataEditedStudent) => {
 
@@ -139,11 +154,11 @@ export class StudentsAbmComponent {
             : student,
         );
 
-      }
+      };
 
-    })
+    });
 
-  }
+  };
 
-}
+};
 
