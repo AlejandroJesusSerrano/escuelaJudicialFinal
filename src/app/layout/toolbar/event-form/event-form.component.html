@@ -1,0 +1,76 @@
+<div mat-dialog-content>
+    <h1 mat-dialog-title class="text-center"> Nuevo Evento</h1>
+    <div class="formgrid"></div>
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        
+        <mat-form-field class="field col-2">
+            <mat-label>Día</mat-label>
+            <input 
+                matInput
+                type="number"
+                [formControl]='dayControl'
+            >
+            <mat-error *ngFor="let error of dayControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field col-2">
+            <mat-label>Mes</mat-label>
+            <input
+                matInput
+                type="number"
+                [formControl]="monthControl"
+            >
+            <mat-error *ngFor="let error of monthControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-2">
+            <mat-label>Año</mat-label>
+            <input
+                matInput
+                type="number"
+                placeholder="2023"
+                [formControl]="yearControl"
+            >
+            <mat-error *ngFor="let error of yearControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+        
+        <div class="col-5"></div>
+
+        <mat-form-field class="field col-3">
+            <mat-label>Hora</mat-label>
+            <input
+                matInput
+                type="number"
+                [formControl]="hoursControl"
+            >
+            <mat-error *ngFor="let error of hoursControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <mat-form-field class="field col-3">
+            <mat-label>Minutos</mat-label>
+            <input
+                matInput
+                type="number"
+                [formControl]="minutesControl"
+            >
+            <mat-error *ngFor="let error of minutesControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+        
+        <dir class="col5"></dir>
+
+        <mat-form-field class="field col-6">
+            <mat-label>Detalle del Evento</mat-label>
+            <textarea
+                matInput
+                type="number"
+                [formControl]="detailControl"
+            ></textarea>
+            <mat-error *ngFor="let error of detailControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>     
+        </mat-form-field>
+
+        <div mat-dialog-actions>
+            <button type="submit" mat-flat-button color="primary" (click)="saveFormData()"> Guardar </button>
+            <button mat-flat-button color="warn" mat-dialog-close> Cancelar </button>
+        </div>
+    </form>
+</div>

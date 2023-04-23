@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { DateTimeService } from '../../core/services/date-time.service';
-import { DateTime } from '../../core/services/date-time.service'
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { EventFormComponent } from './event-form/event-form.component';
 
 
 @Component({
@@ -16,17 +17,36 @@ export class ToolbarComponent {
   @Input() drawer!: MatDrawer;
   @Output() toggleDrawer = new EventEmitter<void>();
 
-  // timeNow: DateTime | null = null;
-  
   timeNow$: Observable<string>;
+  eventFormData: any[] = [];
 
   onToggleSidenav(): void {
     this.toggleDrawer.emit();
   }
 
-  constructor(private dateTimeService: DateTimeService) {
-    // this.dateTimeService.calendar.subscribe((timeNow) => this.timeNow = timeNow);
+  constructor(
+    private formDialog: MatDialog,
+    private dateTimeService: DateTimeService
+    ) {
 
     this.timeNow$ = this.dateTimeService.calendar;
   }
-}
+
+  openEventFormDialog(): void {
+
+    const dialog = this.formDialog.open(EventFormComponent);
+
+    dialog.afterClosed().subscribe(
+      (value) => {
+
+        if (value) {
+
+          this.eventFormData.push(value);
+
+        }
+      }
+    );
+  }
+
+};
+

@@ -1,24 +1,26 @@
 <mat-toolbar color="primary">
     <span>Escuela Judicial</span>
-    <button
-        mat-icon-button class="example-icon"
-        aria-label="Example icon-button with menu icon"
-        (click)="onToggleSidenav()"
-    >
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+        (click)="onToggleSidenav()">
         <mat-icon>menu</mat-icon>
     </button>
 
     <span class="example-spacer"></span>
-    
+
     {{ timeNow$ | async }}
 
-    <span class="example-spacer"></span>
-    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
+    <button 
+        mat-raised-button 
+        color="accent" 
+        class="m-2" 
+        (click)= "openEventFormDialog()"
+    >
+        Crear Evento
+        <mat-icon>event</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button> -->
+
+    <span class="example-spacer"></span>
+
     <span class="mx-1">Modo oscuro</span>
     <app-dark-mode-switch></app-dark-mode-switch>
 </mat-toolbar>

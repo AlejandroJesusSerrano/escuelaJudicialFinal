@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AbmFormularComponent } from './abm-formular/abm-formular.component';
-import { DateTime, DateTimeService } from 'src/app/core/services/date-time.service';
+import { DateTimeService } from 'src/app/core/services/date-time.service';
 import { Subscription } from 'rxjs';
 
 

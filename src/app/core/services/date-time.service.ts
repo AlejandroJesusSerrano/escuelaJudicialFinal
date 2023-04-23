@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, pipe } from 'rxjs';
+import Swal from 'sweetalert2';
 
 export interface DateTime {
 
@@ -9,6 +10,7 @@ export interface DateTime {
   hours: number;
   minutes: number;
   seconds: number;
+  detail: string;
 
 }
 
@@ -19,10 +21,14 @@ export interface DateTime {
 export class DateTimeService {
 
   private _calendar$ = new BehaviorSubject<DateTime>(this.currentTime);
+  private establishedEvent: DateTime | null = null;
 
   constructor() {
     setInterval(() => {
+
       this._calendar$.next(this.currentTime)
+      this.verifyEvent()
+
     }, 1000)
   }
 
@@ -46,6 +52,33 @@ export class DateTimeService {
       hours: now.getHours(),
       minutes: now.getMinutes(),
       seconds: now.getSeconds(),
+      detail: ''
     }
+  }
+
+  verifyEvent():void {
+    if (this.establishedEvent) {
+      
+      if (
+        this.establishedEvent.day === this.currentTime.day
+        && this.establishedEvent.month === this.currentTime.month
+        && this.establishedEvent.year === this.currentTime.year
+        && this.establishedEvent.hours === this.currentTime.hours
+        && this.establishedEvent.minutes === this.currentTime.minutes
+        && this.establishedEvent.seconds === this.currentTime.seconds
+        ) {
+          Swal.fire({
+            title: `Tiene un Evento Pendiente: ${this.currentTime.hours}:${this.currentTime.minutes}`,
+            text:  this.establishedEvent.detail,
+            icon: 'warning',
+            iconColor: '#90caf9',
+            confirmButtonColor: '#0d47a1',
+          })
+        }
+    }
+  }
+
+  setEvent(event: Omit<DateTime, 'seconds'>) {
+    this.establishedEvent = {...event, seconds:0};
   }
 }
