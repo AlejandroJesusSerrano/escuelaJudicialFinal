@@ -6,32 +6,15 @@
             Descripcion
         </button>
         <div class="container">
-            <ul class="menu-list">
-                <li class="nav-item">
-                    <button mat-flat-button><mat-icon>home</mat-icon> Home </button>
-                    <hr>
-                </li>
-                <li>
-                    <button mat-flat-button [matMenuTriggerFor]="students"><mat-icon>school</mat-icon>Gestion de
-                        Alumnos</button>
-                    <mat-menu #students="matMenu">
-                        <button mat-menu-item>Registro de Alumnos</button>
-                        <button mat-menu-item [matMenuTriggerFor]="students_status">Consulta de Alumnos</button>
-                    </mat-menu>
-
-                    <mat-menu #students_status="matMenu">
-                        <button mat-menu-item>Consulta estado alumno</button>
-                        <button mat-menu-item>Alumnos habilitados para cursos</button>
-                    </mat-menu>
-                    <hr>
-                <li class="nav-item">
-                    <button mat-flat-button [matMenuTriggerFor]="courses"><mat-icon>grading</mat-icon> Cursos </button>
-                    <mat-menu #courses="matMenu">
-                        <button mat-menu-item>Calificaciones</button>
-                        <button mat-menu-item>Inscriptos por Curso</button>
-                    </mat-menu>
-                </li>
-            </ul>
+            <mat-nav-list>
+                <a
+                    [routerLink]="link.path" 
+                    mat-list-item 
+                    *ngFor="let link of links"
+                >
+                    <mat-icon>{{ link.icon }}</mat-icon> {{ link.title }}
+                </a>
+            </mat-nav-list>
         </div>
     </mat-drawer>
 

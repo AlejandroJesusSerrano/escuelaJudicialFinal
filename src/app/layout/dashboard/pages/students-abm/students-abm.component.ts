@@ -95,21 +95,13 @@ export class StudentsAbmComponent {
     };
   };
 
-  dateTimeNowStandard: string | null = null
+  
 
-  subscriptionRef: Subscription | null
+  
 
 
   constructor(
-    private formDialog: MatDialog,
-    private dateTimeService: DateTimeService
-  ) {
-    this.subscriptionRef = this.dateTimeService.calendar.subscribe((value) => this.dateTimeNowStandard = value);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptionRef?.unsubscribe();
-  }
+    private formDialog: MatDialog) { }
 
   openStudentFormDialog(): void {
 

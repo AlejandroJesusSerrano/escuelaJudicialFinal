@@ -8,9 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { DarkModeSwitchModule } from '../dark-mode-switch/dark-mode-switch.module';
 import { ToolbarModule } from '../toolbar/toolbar.module';
 import { MatMenuModule } from '@angular/material/menu';
-import { HomeModule } from '../../pages/home/home.module';
-import { StudentsAbmModule } from '../../pages/students-abm/students-abm.module'
+import { HomeModule } from './pages/home/home.module';
+import { StudentsAbmModule } from './pages/students-abm/students-abm.module'
 import { RouterModule } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RouterModule } from '@angular/router';
     HomeModule,
     StudentsAbmModule,
     RouterModule,
+    MatListModule
   ],
   exports: [
     DashboardComponent

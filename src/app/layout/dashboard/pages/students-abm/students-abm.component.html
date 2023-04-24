@@ -12,13 +12,6 @@
     </button>
 </div>
 
-<div>
-    <p>
-        Fecha y hora sin pipe async: {{ dateTimeNowStandard }}
-    </p> 
-</div>
-
-
 <mat-form-field class="w-full">
     <mat-label>Buscar</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Nombre" #input>
