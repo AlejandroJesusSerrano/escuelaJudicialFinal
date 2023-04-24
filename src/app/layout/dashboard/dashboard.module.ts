@@ -12,6 +12,7 @@ import { HomeModule } from './pages/home/home.module';
 import { StudentsAbmModule } from './pages/students-abm/students-abm.module'
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
+import { CoursesModule } from './pages/courses/courses.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatListModule } from '@angular/material/list';
     HomeModule,
     StudentsAbmModule,
     RouterModule,
-    MatListModule
+    MatListModule,
+    CoursesModule
   ],
   exports: [
     DashboardComponent
