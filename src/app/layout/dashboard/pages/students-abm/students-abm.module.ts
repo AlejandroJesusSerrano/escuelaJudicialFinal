@@ -12,12 +12,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSelectModule } from '@angular/material/select';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { StudentsDetailsComponent } from './students-details/students-details.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     StudentsAbmComponent,
     AbmFormularComponent,
+    StudentsDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -31,9 +34,10 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
     SharedModule,
     MatSelectModule,
     DirectivesModule,
+    MatCardModule
   ],
   exports: [
-    StudentsAbmComponent
+    StudentsAbmComponent,
   ],
   providers: [
     DatePipe,

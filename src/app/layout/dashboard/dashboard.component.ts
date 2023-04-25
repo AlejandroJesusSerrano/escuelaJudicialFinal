@@ -42,6 +42,9 @@ export class DashboardComponent {
     this.destroyed$.complete()
   }
 
+  logout(): void {
+    this.router.navigate(['auth', 'login'])
+  }
 
 
 }

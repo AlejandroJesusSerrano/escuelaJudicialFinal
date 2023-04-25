@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AbmFormularComponent } from './abm-formular/abm-formular.component';
-import { DateTimeService } from 'src/app/core/services/date-time.service';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StudentsService } from '../../../../core/services/students.service'
 
 
 
@@ -29,52 +29,10 @@ export interface Student {
 
 export class StudentsAbmComponent {
   @ViewChild(MatTable, { static: true }) table!: MatTable<any>;
-  students: Student[] = [
-    {
-      id: 1,
-      name: 'Andrea',
-      last_name: 'Vitale Diez',
-      email: 'andruvit@gmail.com',
-      password: 'H0l4Qu3+',
-      register_date: new Date(),
-      course: 'PROFAMAG',
-      homeAddress: 'Barrio Jardines de San Lorenzo, Mz. 4, Lote 1',
-      neighborhood: 'Jardines de San Lorenzo',
-      city: 'Salta',
-      zip: '4401'
-
-    },
-    {
-      id: 2,
-      name: 'Alejandro',
-      last_name: 'Serrano',
-      register_date: new Date(),
-      email: 'alejserrano@gmail.com',
-      password: 'H0l4Qu3+',
-      course: 'LEY YOLANDA',
-      homeAddress: 'Barrio Jardines de San Lorenzo, Mz. 4, Lote 1',
-      neighborhood: 'Jardines de San Lorenzo',
-      city: 'Salta',
-      zip: '4401'
-    },
-    {
-      id: 3,
-      name: 'Juan Pablo',
-      last_name: 'Acosta Sabatini',
-      register_date: new Date(),
-      email: 'acostasabatini@yahoo.com.ar',
-      password: 'H0l4Qu3+',
-      course: 'PROFAMAG',
-      homeAddress: 'Barrio Profesionales, Mz. 20, Lote 15',
-      neighborhood: 'Jardines de San Lorenzo',
-      city: 'Salta',
-      zip: '4401'
-    },
-  ];
 
   displayedColumns: string[] = ['id', 'completeName', 'register_date', 'email', 'course', 'address', 'city', 'delete'];
 
-  dataSource = new MatTableDataSource(this.students);
+  dataSource = new MatTableDataSource<Student>();
 
   applyFilter(ev: Event): void {
 
@@ -82,6 +40,27 @@ export class StudentsAbmComponent {
     this.dataSource.filter = inputValue.trim().toLowerCase();
 
   };
+
+  
+  constructor(
+    private formDialog: MatDialog,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private studentsService: StudentsService,
+    ) { 
+
+      this.studentsService.takeStudents()
+        .subscribe((students) => {
+          this.dataSource.data = students;
+        });
+
+    }
+
+    goToStudentDetails(studentId: number): void {
+      this.router.navigate([studentId],{
+        relativeTo: this.activatedRoute
+      })
+    }
 
   deleteStudent(studentId: number): void {
 
@@ -94,14 +73,6 @@ export class StudentsAbmComponent {
 
     };
   };
-
-  
-
-  
-
-
-  constructor(
-    private formDialog: MatDialog) { }
 
   openStudentFormDialog(): void {
 

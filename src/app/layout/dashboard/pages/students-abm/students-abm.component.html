@@ -29,7 +29,7 @@
     <!-- Complete Name Column -->
     <ng-container matColumnDef="completeName">
         <th mat-header-cell *matHeaderCellDef [appFontSize]=20> Alumno </th>
-        <td mat-cell *matCellDef="let student"[appFontSize]=16> {{ student.completeName }} </td>
+        <td mat-cell *matCellDef="let student"[appFontSize]=16> {{ student | completeName }} </td>
     </ng-container>
 
     <!-- Email Column -->
@@ -60,9 +60,10 @@
     </ng-container>
 
     <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef [appFontSize]=20> Acciones </th>
-        <td mat-cell *matCellDef="let student"[appFontSize]=16>
-            <button mat-icon-button color="primary" aria-label="Editar registro" (click)="editStudent(student)"><mat-icon>edit</mat-icon></button>
+        <th mat-header-cell *matHeaderCellDef [appFontSize]=20 class="text-center"> Acciones </th>
+        <td mat-cell *matCellDef="let student"[appFontSize]=16 class="text-center">
+            <button mat-icon-button color="accent" aria-label="Ver detalles" (click)="goToStudentDetails(student.id)"><mat-icon>visibility</mat-icon></button>
+            <button mat-icon-button aria-label="Editar registro" (click)="editStudent(student)"><mat-icon>edit</mat-icon></button>
             <button mat-icon-button color="warn" aria-label="Borrar registro" (click)="deleteStudent(student.id)"><mat-icon>delete</mat-icon></button>
         </td>
     </ng-container>
