@@ -46,5 +46,8 @@ export class DashboardComponent {
     this.router.navigate(['auth', 'login'])
   }
 
+  register(): void {
+    this.router.navigate(['auth', 'register'])
+  }
 
 }

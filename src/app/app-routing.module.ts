@@ -9,13 +9,14 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { StudentsDetailsComponent } from './layout/dashboard/pages/students-abm/students-details/students-details.component';
+import { WelcomeComponent } from './auth/pages/welcome/welcome.component';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-        {path: 'home', component: HomeComponent},
+        { path: '', component: HomeComponent },
         {
           path: 'students',
           children: [
@@ -29,22 +30,23 @@ const routes: Routes = [
             }
           ]
         },
-        {path: 'courses', component: CoursesComponent},
-        {path: 'inscriptions', component: InscriptionsComponent}
+        { path: 'courses', component: CoursesComponent },
+        { path: 'inscriptions', component: InscriptionsComponent }
       ]
   },
   {
     path: 'auth',
     component: AuthComponent,
     children: [
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+      { path: '', component: WelcomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
     ]
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
-  }
+    redirectTo: 'auth'
+  },
 ];
 
 @NgModule({

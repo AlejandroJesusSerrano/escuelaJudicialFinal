@@ -28,6 +28,7 @@ export interface Student {
 })
 
 export class StudentsAbmComponent {
+  
   @ViewChild(MatTable, { static: true }) table!: MatTable<any>;
 
   displayedColumns: string[] = ['id', 'completeName', 'register_date', 'email', 'course', 'address', 'city', 'delete'];

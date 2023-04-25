@@ -13,6 +13,7 @@ import { StudentsAbmModule } from './pages/students-abm/students-abm.module'
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { CoursesModule } from './pages/courses/courses.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CoursesModule } from './pages/courses/courses.module';
     StudentsAbmModule,
     RouterModule,
     MatListModule,
-    CoursesModule
+    CoursesModule,
+    MatCardModule
   ],
   exports: [
     DashboardComponent
