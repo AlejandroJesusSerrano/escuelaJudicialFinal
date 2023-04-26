@@ -1,2 +1,59 @@
-<p>courses works!</p>
+<h1 class="text-center">Gestion de Alumnos</h1>
+
+<div class="flex flex-row-reverse mb-5">
+    <button
+        mat-raised-button
+        color="primary"
+        class="top-0 left-2"
+        (click)= "openCoursesFormDialog()"
+    >
+        <mat-icon>add</mat-icon>Crear Curso
+    </button>
+</div>
+
+<mat-form-field class="w-full">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Nombre" #input>
+</mat-form-field>
+
+
+<table mat-table [dataSource]="dataSource">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef [appFontSize]=20>ID</th>
+        <td mat-cell *matCellDef="let course"[appFontSize]=16> {{ course.id }} </td>
+    </ng-container>
+
+    <!-- Complete Name Column -->
+    <ng-container matColumnDef="course">
+        <th mat-header-cell *matHeaderCellDef [appFontSize]=20> Curso </th>
+        <td mat-cell *matCellDef="let course"[appFontSize]=16> {{ course.course }} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="init_date">
+        <th mat-header-cell *matHeaderCellDef [appFontSize]=20> Fecha de Inicio </th>
+        <td mat-cell *matCellDef="let course"[appFontSize]=16> {{ course.init_date | date: 'dd/MM/yyyy' }} </td>
+    </ng-container>
+
+    <!-- Register Date Column -->
+    <ng-container matColumnDef="finish_date" >
+        <th mat-header-cell *matHeaderCellDef [appFontSize]=20> Fecha de Finalización </th>
+        <td mat-cell *matCellDef="let course"[appFontSize]=16> {{ course.finish_date | date: 'dd/MM/yyyy' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef [appFontSize]=20 class="text-center"> Acciones </th>
+        <td mat-cell *matCellDef="let course"[appFontSize]=16 class="text-center">
+            <button mat-icon-button color="accent" aria-label="Ver detalles" (click)="goToCoursesDetails()"><mat-icon>visibility</mat-icon></button>
+            <button mat-icon-button aria-label="Editar registro" (click)="editCourse()"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" aria-label="Borrar registro" (click)="deleteCourse()"><mat-icon>delete</mat-icon></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
 

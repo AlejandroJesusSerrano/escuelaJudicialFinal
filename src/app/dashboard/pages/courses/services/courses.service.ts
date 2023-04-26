@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Course } from '../models';
+import { BehaviorSubject, Observable, take } from 'rxjs';
+import { CreateCoursePayload, Course } from '../models';
+
 
 const COURSES_MOCK: Course[] = [
   {
@@ -48,4 +49,26 @@ export class CoursesService {
     this.courses$.next(COURSES_MOCK);
     return this.courses$.asObservable();
   }
+
+  createCourse(payload: CreateCoursePayload): Observable<Course[]> {
+    this.courses$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (courses) => {
+        this.courses$.next([
+          ...courses,
+          {
+            id: courses.length + 1,
+            ...payload,
+          },
+        ]);
+      },
+    });
+
+    return this.courses$.asObservable();
+    
+  }
+
 }

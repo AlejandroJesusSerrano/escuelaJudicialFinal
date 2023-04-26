@@ -32,7 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     StudentsAbmModule,
     RouterModule,
     MatListModule,
-    CoursesModule,
+    CoursesModule, 
     MatCardModule
   ],
   exports: [
