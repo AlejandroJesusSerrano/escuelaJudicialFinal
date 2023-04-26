@@ -4,7 +4,7 @@ import links from './nav-items';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Observable, Subject } from 'rxjs';
-import { User } from 'src/app/models';
+import { User } from 'src/app/auth/models';
 
 @Component({
   selector: 'app-dashboard',

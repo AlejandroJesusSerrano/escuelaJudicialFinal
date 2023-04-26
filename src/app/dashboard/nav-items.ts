@@ -6,14 +6,14 @@ interface NavItem {
 
 const links: NavItem[] = [
     {
-        path: 'students',
-        title: 'Alumnos',
-        icon: 'school' 
-    },
-    {
         path: 'home',
         title: 'Home',
         icon: 'home',
+    },
+    {
+        path: 'students',
+        title: 'Alumnos',
+        icon: 'school' 
     },
     {
         path: 'courses',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, debounceTime, map, tap } from 'rxjs';
-import { User } from 'src/app/models';
+import { User } from 'src/app/auth/models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Router } from '@angular/router';

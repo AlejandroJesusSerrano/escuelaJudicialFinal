@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { DateTimeService } from '../../core/services/date-time.service';
+import { DateTimeService } from '../../../core/services/date-time.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { EventFormComponent } from './event-form/event-form.component';

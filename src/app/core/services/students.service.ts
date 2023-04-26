@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map } from 'rxjs';
-import { Student } from 'src/app/layout/dashboard/pages/students-abm/students-abm.component';
+import { Student } from 'src/app/dashboard/pages/students-abm/students-abm.component';
 
 @Injectable({
   providedIn: 'root'

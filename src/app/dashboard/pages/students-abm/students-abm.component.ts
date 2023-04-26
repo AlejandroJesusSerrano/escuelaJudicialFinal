@@ -3,7 +3,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AbmFormularComponent } from './abm-formular/abm-formular.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StudentsService } from '../../../../core/services/students.service'
+import { StudentsService } from '../../../core/services/students.service'
 
 
 
