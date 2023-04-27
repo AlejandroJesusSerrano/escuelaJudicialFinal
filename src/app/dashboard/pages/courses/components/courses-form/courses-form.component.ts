@@ -2,7 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Course } from '../models';
+
+
 
 @Component({
   selector: 'app-courses-form',
@@ -32,42 +33,29 @@ export class CoursesFormComponent {
 
   coursesForm = new FormGroup({
     course: this.courseControl,
-    initialDate: this.init_dateControl,
-    finishDate: this.finish_dateControl,
-    detail: this.course_detailControl,
+    init_date: this.init_dateControl,
+    finish_date: this.finish_dateControl,
+    course_detail: this.course_detailControl,
   });
 
-  courseEdit: Course;
-
   constructor(
-    private dialogRef: MatDialogRef<CoursesFormComponent>,
     private datePipe: DatePipe,
-    @Inject(MAT_DIALOG_DATA) public data: { courseEdit: Course }) {
-    this.courseEdit = data && data.courseEdit ? data.courseEdit : {} as Course;
+    private dialogRef: MatDialogRef<CoursesFormComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    ) {
+    if (data) {
+      const courseToEdit = data.course;
+      this.courseControl.setValue(courseToEdit.course);
+      this.init_dateControl.setValue(courseToEdit.init_date);
+      this.finish_dateControl.setValue(courseToEdit.finish_date);
+      this.course_detailControl.setValue(courseToEdit.course_detail);
+      
+      }
   }
-
-
-  // ngOnInit(): void {
-  //   if (this.coursesEdit) {
-
-  //     console.log(this.coursesEdit);
-
-  //     this.coursesForm.patchValue({
-
-  //       course: this.courseControl,
-  //       initialDate: this.init_dateControl,
-  //       finishDate: this.finish_dateControl,
-  //       detail: this.course_detailControl,
-
-  //     });
-
-  //   }
-
-  // };
 
   saveFormData(): void {
     if (this.coursesForm.valid) {
-
+      console.log(this.coursesForm.value)
       this.dialogRef.close(this.coursesForm.value)
 
     } else {

@@ -10,6 +10,7 @@ import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { StudentsDetailsComponent } from './dashboard/pages/students-abm/students-details/students-details.component';
 import { WelcomeComponent } from './auth/pages/welcome/welcome.component';
+import { CoursesDetailsComponent } from './dashboard/pages/courses/components/courses-details/courses-details.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,19 @@ const routes: Routes = [
             }
           ]
         },
-        { path: 'courses', component: CoursesComponent },
+        { 
+          path: 'courses',
+          children: [
+            {
+              path: '',
+              component: CoursesComponent
+            },
+            {
+              path: ':id',
+              component: CoursesDetailsComponent
+            }
+          ]
+        },
         { path: 'inscriptions', component: InscriptionsComponent },
         { path: '**', redirectTo: 'home' },
       ]

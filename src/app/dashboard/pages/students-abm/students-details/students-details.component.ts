@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StudentsService } from '../../../../core/services/students.service';
+import { StudentsService } from '../services/students.service';
 import { Student } from '../students-abm.component';
 import { Location } from '@angular/common';
 

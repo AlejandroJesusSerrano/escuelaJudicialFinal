@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesService } from './services/courses.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { CoursesFormComponent } from './courses-form/courses-form.component';
+import { CoursesFormComponent } from './components/courses-form/courses-form.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Course } from './models';
 
 
 @Component({
@@ -26,7 +28,9 @@ export class CoursesComponent implements OnInit {
   
   constructor(
     private coursesService: CoursesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     ) { }
 
   ngOnInit(): void {
@@ -44,26 +48,46 @@ export class CoursesComponent implements OnInit {
   }
 
   
-  openCoursesFormDialog(): void{
-    this.dialog.open(CoursesFormComponent)
+  createCourses(): void{
+    const dialog = this.dialog.open(CoursesFormComponent)
+
+    dialog.afterClosed()
+    .subscribe((formValue) => {
+      
+      if (formValue){
+
+        this.coursesService.createCourse(formValue);
+
+      }
+    })
 
   }
 
-  editCourse(): void {
+  editCourse(course: Course): void {
+    const dialog = this.dialog.open(CoursesFormComponent, {
+      data: {
+        course, 
+      }
+    });
+    dialog.afterClosed()
+    .subscribe((formValue) => {
+      if (formValue) {
+        this.coursesService.editCourse(course.id, formValue);
+      }
+    });
 
   }
 
-  deleteCourse(): void {
-
-  }
-
-  goToCoursesDetails(): void {
-
-  }
-
-
-
-  
+  deleteCourse(course: Course): void {
     
+    this.coursesService.deleteCourse(course.id)
   } 
+
+  goToCoursesDetails(courseId: number): void {
+    this.router.navigate([courseId],{
+      relativeTo: this.activatedRoute
+    })
+
+  }
+} 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { BehaviorSubject, Observable, map, take } from 'rxjs';
 import { CreateCoursePayload, Course } from '../models';
 
 
@@ -65,10 +65,64 @@ export class CoursesService {
           },
         ]);
       },
+      complete: () => {},
+      error: () => {}
     });
 
     return this.courses$.asObservable();
     
+  }
+
+  editCourse(courseId: number, update: Partial<Course>): Observable<Course[]> {
+    this.courses$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (courses) => {
+        
+        const coursesEdited = courses.map((course) => {
+          if (course.id === courseId) {
+            return {
+              ...course, 
+              ...update,
+            }
+          } else {
+            return course;
+          }
+        })
+
+        this.courses$.next(coursesEdited)
+      },
+      complete: () => {},
+      error: () => {}
+    });
+    return this.courses$.asObservable()
+  };
+
+  deleteCourse(courseId: number): Observable<Course[]> {
+    this.courses$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (courses) => {
+        
+        const coursesEdited = courses.filter((course) => course.id !== courseId)
+
+        this.courses$.next(coursesEdited)
+      },
+      complete: () => {},
+      error: () => {}
+    });
+    return this.courses$.asObservable()
+  };
+
+  takeCourseById(id: number): Observable<Course | undefined> {
+    return this.courses$.asObservable()
+    .pipe(
+      map((courses) => courses.find((c) => c.id === id))
+    )
   }
 
 }
