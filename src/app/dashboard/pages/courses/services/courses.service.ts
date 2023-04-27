@@ -123,6 +123,6 @@ export class CoursesService {
     .pipe(
       map((courses) => courses.find((c) => c.id === id))
     )
-  }
+    }
 
 }

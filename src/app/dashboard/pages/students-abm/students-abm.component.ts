@@ -4,22 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { AbmFormularComponent } from './abm-formular/abm-formular.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from './services/students.service'
+import { Student } from './models';
 
 
 
-export interface Student {
-  id: number;
-  name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  register_date: Date;
-  course: string;
-  homeAddress: string;
-  city: string;
-  neighborhood: string;
-  zip: string;
-};
 
 @Component({
   selector: 'app-students-abm',
