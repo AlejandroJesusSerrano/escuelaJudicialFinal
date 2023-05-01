@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, debounceTime, map, tap } from 'rxjs';
-import { User } from 'src/app/auth/models';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { LogInFormValue, User } from 'src/app/auth/models';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Router } from '@angular/router';
 
@@ -49,12 +49,15 @@ export class LoginComponent {
   ) { }
   
   logIn(): void {
-    console.log(this.logInForm.value);
     
-    this.authService.logIn({
-      ...(this.logInForm.value as any ),
-      id:16,
-    })
+    if (this.logInForm.invalid) {
+        this.logInForm.markAllAsTouched();
+      } else {
+      this.authService.logIn(this.logInForm.value as LogInFormValue)
+      this.logInUser()
+    
+    }
+
   }
 
   hearChangesInEmailControl(): void {

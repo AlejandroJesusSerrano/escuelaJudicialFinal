@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, take } from 'rxjs';
 import { CreateCoursePayload, Course } from '../models';
+import { HttpClient } from '@angular/common/http';
+
 
 
 const COURSES_MOCK: Course[] = [
@@ -43,7 +45,23 @@ export class CoursesService {
 
   private courses$ = new BehaviorSubject<Course[]>([]);
 
-  constructor() { }
+  courseApi: any;
+
+  constructor(
+    private client: HttpClient,
+  ) {}
+
+  getCourses():Observable<any>{
+    return this.client.get<any>(`http://localhost:3001/getCourses`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+        'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method'
+      }
+    }) 
+
+  }
+
 
   takeCourses(): Observable<Course[]> {
     this.courses$.next(COURSES_MOCK);
