@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "name": "Alejandro Jesús",
+      "lastName": "Serrano",
+      "userName": "alejserrano",
+      "email": "alejserrano@gmail.com",
+      "password": "Cr3d170r105*",
+      "token": "lkasdjfkolpñiawshfgio3456531LKJOLPÑIBJGOFIJ45df456asasdñfjkaps55d7fasdf",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "name": "Josue",
+      "lastName": "Baez",
+      "userName": "jbaez",
+      "email": "josuebaez@gmail.com",
+      "password": "H15t0r1374+",
+      "token": "ywerbsopglpñiawshfgio3456531LKJOLPÑIBJGOFIJ45df456asasdñfjkaps55d7fasdf",
+      "role": "user",
+      "id": 2
+    }
+  ]
+}

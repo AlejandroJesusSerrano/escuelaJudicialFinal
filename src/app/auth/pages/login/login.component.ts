@@ -24,7 +24,7 @@ export class LoginComponent {
     Validators.email,
   ]);
 
-  nameControl = new FormControl('', [
+  userNameControl = new FormControl('', [
     Validators.minLength(3),
     Validators.maxLength(30),
     Validators.required,
@@ -37,7 +37,7 @@ export class LoginComponent {
   ]);
 
   logInForm = new FormGroup({
-    name: this.nameControl,
+    userName: this.userNameControl,
     email: this.emailControl,
     password: this.passwordControl,
   })

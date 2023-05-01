@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     LayoutsModule,
     FormsModule,
+    HttpClientModule,
     
   ],
   providers: [],

@@ -15,8 +15,8 @@
             <div class="field">
                 <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Nombre de Usuario</mat-label>
-                    <input [formControl]="nameControl" matInput placeholder="Ingrese su Nombre de Usuario">
-                    <mat-error *ngFor="let error of nameControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
+                    <input [formControl]="userNameControl" matInput placeholder="Ingrese su Nombre de Usuario">
+                    <mat-error *ngFor="let error of userNameControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
                 </mat-form-field>
             </div>
 
