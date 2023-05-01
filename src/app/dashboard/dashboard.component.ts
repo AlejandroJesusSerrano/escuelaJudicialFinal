@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import links from './nav-items';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Observable, Subject } from 'rxjs';
 import { User } from 'src/app/auth/models';
 
@@ -19,7 +19,7 @@ export class DashboardComponent {
     this.drawer.toggle();
   }
 
-  authUserObs$: Observable<User>
+  public authUserObs$: Observable<User | null>
 
   destroyed$ = new Subject<void>();
 
@@ -39,15 +39,15 @@ export class DashboardComponent {
   
   ngOnDestroy(): void {
     this.destroyed$.next();
-    this.destroyed$.complete()
+    this.destroyed$.complete();
   }
 
   logout(): void {
-    this.router.navigate(['auth', 'login'])
+    this.authService.logout();
   }
 
   register(): void {
-    this.router.navigate(['auth', 'register'])
+    this.router.navigate(['auth', 'register']);
   }
 
 }

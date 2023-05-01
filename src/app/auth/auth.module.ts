@@ -11,10 +11,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../shared/shared.module';
 import { PipesModule } from '../shared/pipes/pipes.module';
-import { ToolbarComponent } from './layouts/toolbar/toolbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { AuthToolbarModule } from '../layouts/auth-toolbar/auth-toolbar.module';
+import { DarkModeSwitchModule } from '../layouts/dark-mode-switch/dark-mode-switch.module';
+
+
 
 
 
@@ -23,8 +27,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     LoginComponent,
     RegisterComponent,
     AuthComponent,
-    ToolbarComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,
@@ -38,9 +41,13 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     PipesModule,
     MatToolbarModule,
     MatCardModule,
+    AuthRoutingModule,
+    AuthToolbarModule,
+    DarkModeSwitchModule,
   ],
   exports: [
-    RegisterComponent
+    RegisterComponent,
+    AuthComponent,
   ]
 })
 export class AuthModule { }

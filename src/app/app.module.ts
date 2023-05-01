@@ -7,6 +7,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { LayoutsModule } from './layouts/layouts.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +23,9 @@ import { CoreModule } from './core/core.module';
     DashboardModule,
     RouterModule,
     AuthModule,
-    CoreModule
+    CoreModule,
+    LayoutsModule,
+    FormsModule,
     
   ],
   providers: [],

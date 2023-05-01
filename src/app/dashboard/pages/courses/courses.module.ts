@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -37,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
     MatNativeDateModule,
     MatDatepickerModule,
     MatCardModule,
+    HttpClientModule
   ],
   exports: [
     CoursesComponent

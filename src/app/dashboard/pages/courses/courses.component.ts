@@ -40,6 +40,10 @@ export class CoursesComponent implements OnInit {
           this.dataSource.data = courses;
         }
       });
+
+      this.coursesService.getCourses().subscribe( (m) => {
+        console.log (m)
+      } )
   };
 
   applyFilter(ev: Event): void {
