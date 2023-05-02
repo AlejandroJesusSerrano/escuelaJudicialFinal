@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DarkModeSwitchModule } from './layouts/dark-mode-switch/dark-mode-switch.module';
 
 
 
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutsModule,
     FormsModule,
     HttpClientModule,
+    DarkModeSwitchModule,
     
   ],
   providers: [],

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, map, catchError, throwError } from 'rxjs';
 import { User, LogInFormValue } from '../models';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environments } from 'src/environments/environmets';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environments';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,6 @@ export class AuthService {
     private httpClient: HttpClient) { }
 
   getAuthUser(): Observable<User | null> {
-    console.log('authUser$ value:', this.authUser$.getValue());
 
     return this.authUser$.asObservable();
 
@@ -26,33 +26,60 @@ export class AuthService {
 
   logIn(formValue: LogInFormValue): void {
 
-    this.httpClient.get(
-      `${environments.apiBaseUrl}/users`,
+    this.httpClient.get<User[]>(
+      `${environment.apiBaseUrl}/users`,
       {
         params: {
           ...formValue
         },
       }
-    ).subscribe()
+    ).subscribe({
+      next: (users) => {
+
+        const userAuthenticated = users[0];
+
+        if (userAuthenticated) {
+          localStorage.setItem('token', userAuthenticated.token)
+          this.authUser$.next(userAuthenticated);
+          this.router.navigate(['dashboard']);
+        }
+      }
+    })
   }
 
-  checkStorage(): void {
+  checkToken(): Observable<boolean> {
 
-    const storageValue = localStorage.getItem('auth-user');
-    if (storageValue) {
+    const token = localStorage.getItem('token');
 
-      const user = JSON.parse(storageValue);
+    return this.httpClient.get<User[]>(`${environment.apiBaseUrl}/users?token=${token}`,
+      {
+        headers: new HttpHeaders({
+          'Authorization': token || '',
+        }),
+      }
+    )
+      .pipe(
+        map((users) => {
 
-      this.authUser$.next(user);
+          const userAuthenticated = users[0];
 
-      this.router.navigate(['auth']);
-
-    }
+          if (userAuthenticated) {
+            localStorage.setItem('token', userAuthenticated.token),
+              this.authUser$.next(userAuthenticated);
+          }
+          return !!userAuthenticated;
+        }),
+        catchError((err) => {
+          alert ('Lo sentimos, ¡Ha ocurrido un error!');
+          return throwError(() => err)
+        })
+      );
   }
+
 
   logout(): void {
 
-    localStorage.removeItem('auth-user');
+    localStorage.removeItem('token');
 
     this.authUser$.next(null);
 
