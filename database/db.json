@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "name": "Alejandro Jesús",
+      "lastName": "Serrano",
+      "userName": "alejserrano",
+      "email": "alejserrano@gmail.com",
+      "password": "Cr3d170r105*",
+      "token": "lkasdjfkolpñiawshfgio3456531LKJOLPÑIBJGOFIJ45df456asasdñfjkaps55d7fasdf",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "name": "Josue",
+      "lastName": "Baez",
+      "userName": "jbaez",
+      "email": "josuebaez@gmail.com",
+      "password": "H15t0r1374+",
+      "token": "ywerbsopglpñiawshfgio3456531LKJOLPÑIBJGOFIJ45df456asasdñfjkaps55d7fasdf",
+      "role": "user",
+      "id": 2
+    }
+  ],
+
+  "courses": [
+    {
+      "id": 1, 
+      "course": "Formacion en Genero / Ley Micaela", 
+      "init_date": "2023-05-02T02:24:47.185Z",     
+      "finish_date": "2023-05-02T02:24:47.185Z",
+      "course_detail": "Este Programa procura brindar las herramientas necesarias para articular los ejes de igualdad de géneros y acceso a la justicia."
+    },
+    {
+      "id": 2, 
+      "course": "Ley Yolanda", 
+      "init_date": "2023-05-02T02:26:37.688Z",     
+      "finish_date": "2023-05-02T02:26:37.688Z",
+      "course_detail": "El Programa busca garantizar la formación integral en ambiente con perspectiva de desarrollo sostenible."
+    },
+    {
+      "id": 3, 
+      "course": "PROFAMAG", 
+      "init_date": "2023-05-02T02:28:01.680Z",     
+      "finish_date": "2023-05-02T02:28:01.680Z",
+      "course_detail": "El Programa de Formación para Aspirantes a Magistrados/as brinda herramientas necesarias para el ejercicio del cargo."
+    },
+    {
+      "id": 4, 
+      "course": "Capacitaciones", 
+      "init_date": "2023-05-02T02:29:03.584Z",     
+      "finish_date": "2023-05-02T02:29:03.584Z",
+      "course_detail": "Cursos de actualización y formación en diversas materias que hacen al ejercicio y el entendimiento de la Justicia."
+    }
+  ]
+}

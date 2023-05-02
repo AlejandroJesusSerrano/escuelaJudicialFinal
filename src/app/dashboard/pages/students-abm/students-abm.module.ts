@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 import { StudentsDetailsComponent } from './students-details/students-details.component';
 import { MatCardModule } from '@angular/material/card';
+import { StudentsRoutingModule } from './students-routing.module';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { MatCardModule } from '@angular/material/card';
     SharedModule,
     MatSelectModule,
     DirectivesModule,
-    MatCardModule
+    MatCardModule,
   ],
   exports: [
     StudentsAbmComponent,

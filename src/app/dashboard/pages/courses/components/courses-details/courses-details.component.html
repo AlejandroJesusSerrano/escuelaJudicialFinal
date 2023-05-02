@@ -1,0 +1,17 @@
+<div class="grid justify-content-center mt-8">
+    <mat-card class="example-card col-6">
+        <mat-card-header class="grid">
+            <div class="col-6">
+                <mat-card-title>Curso: {{course?.course}}</mat-card-title>
+                <mat-card-subtitle>Inicia el: {{course?.init_date | date: 'dd/MM/yyyy'}}, Finaliza el: {{course?.finish_date | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+            </div>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p>{{course?.course_detail}}</p>
+        </mat-card-content>
+        <mat-card-actions class="flex justify-content-center my-2">
+            <button mat-flat-button color="primary" (click)="goBack()">Regresar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

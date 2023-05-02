@@ -7,6 +7,10 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { LayoutsModule } from './layouts/layouts.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DarkModeSwitchModule } from './layouts/dark-mode-switch/dark-mode-switch.module';
 
 
 
@@ -21,7 +25,11 @@ import { CoreModule } from './core/core.module';
     DashboardModule,
     RouterModule,
     AuthModule,
-    CoreModule
+    CoreModule,
+    LayoutsModule,
+    FormsModule,
+    HttpClientModule,
+    DarkModeSwitchModule,
     
   ],
   providers: [],

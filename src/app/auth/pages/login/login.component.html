@@ -15,8 +15,8 @@
             <div class="field">
                 <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Nombre de Usuario</mat-label>
-                    <input [formControl]="nameControl" matInput placeholder="Ingrese su Nombre de Usuario">
-                    <mat-error *ngFor="let error of nameControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
+                    <input [formControl]="userNameControl" matInput placeholder="Ingrese su Nombre de Usuario">
+                    <mat-error *ngFor="let error of userNameControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
                 </mat-form-field>
             </div>
 
@@ -25,7 +25,7 @@
                     <mat-label>Ingrese su contraseña</mat-label>
                     <input [formControl]="passwordControl" matInput [type]="hide ? 'password' : 'text'">
                     <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{ error | errorMessages }}</mat-error>
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="mb-2">
-                <button type="submit" mat-flat-button color="primary" class="text-center w-full" (click)="logInUser()"> Log In </button>
+                <button type="submit" mat-flat-button color="primary" class="text-center w-full" (click)="logIn()"> Log In </button>
             </div>
 
             <div>
