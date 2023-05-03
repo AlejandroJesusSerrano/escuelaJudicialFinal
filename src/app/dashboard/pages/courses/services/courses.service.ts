@@ -143,6 +143,10 @@ takeCourseById(id: number): Observable < Course | undefined > {
     .pipe(
       map((courses) => courses.find((c) => c.id === id))
     )
+<<<<<<< HEAD
 }
+=======
+    }
+>>>>>>> 95f87df44017a614ea7755eafaaa0f232aa7da99
 
 }
