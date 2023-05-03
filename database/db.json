@@ -21,35 +21,73 @@
       "id": 2
     }
   ],
-
   "courses": [
     {
-      "id": 1, 
-      "course": "Formacion en Genero / Ley Micaela", 
-      "init_date": "2023-05-02T02:24:47.185Z",     
+      "id": 1,
+      "course": "Formacion en Genero / Ley Micaela",
+      "init_date": "2023-05-02T02:24:47.185Z",
       "finish_date": "2023-05-02T02:24:47.185Z",
       "course_detail": "Este Programa procura brindar las herramientas necesarias para articular los ejes de igualdad de géneros y acceso a la justicia."
     },
     {
-      "id": 2, 
-      "course": "Ley Yolanda", 
-      "init_date": "2023-05-02T02:26:37.688Z",     
+      "id": 2,
+      "course": "Ley Yolanda",
+      "init_date": "2023-05-02T02:26:37.688Z",
       "finish_date": "2023-05-02T02:26:37.688Z",
       "course_detail": "El Programa busca garantizar la formación integral en ambiente con perspectiva de desarrollo sostenible."
     },
     {
-      "id": 3, 
-      "course": "PROFAMAG", 
-      "init_date": "2023-05-02T02:28:01.680Z",     
+      "id": 3,
+      "course": "PROFAMAG",
+      "init_date": "2023-05-02T02:28:01.680Z",
       "finish_date": "2023-05-02T02:28:01.680Z",
       "course_detail": "El Programa de Formación para Aspirantes a Magistrados/as brinda herramientas necesarias para el ejercicio del cargo."
     },
     {
-      "id": 4, 
-      "course": "Capacitaciones", 
-      "init_date": "2023-05-02T02:29:03.584Z",     
+      "id": 4,
+      "course": "Capacitaciones",
+      "init_date": "2023-05-02T02:29:03.584Z",
       "finish_date": "2023-05-02T02:29:03.584Z",
       "course_detail": "Cursos de actualización y formación en diversas materias que hacen al ejercicio y el entendimiento de la Justicia."
     }
-  ]
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Andrea",
+      "last_name": "Vitale Diez",
+      "email": "andruvit@gmail.com",
+      "password": "H0l4Qu3+",
+      "register_date": "2023-05-02T13:53:41.283Z",
+      "homeAddress": "Barrio Jardines de San Lorenzo, Mz. 4, Lote 1",
+      "neighborhood": "Jardines de San Lorenzo",
+      "city": "Salta",
+      "zip": "4401"
+    },
+    {
+      "id": 2,
+      "name": "Alejandro",
+      "last_name": "Serrano",
+      "register_date": "2023-05-02T13:55:18.987Z",
+      "email": "alejserrano@gmail.com",
+      "password": "H0l4Qu3+",
+      "homeAddress": "Barrio Jardines de San Lorenzo, Mz. 4, Lote 1",
+      "neighborhood": "Jardines de San Lorenzo",
+      "city": "Salta",
+      "zip": "4401"
+    },
+    {
+      "id": 3,
+      "name": "Juan Pablo",
+      "last_name": "Acosta Sabatini",
+      "register_date": "new Date(),",
+      "email": "acostasabatini@yahoo.com.ar",
+      "password": "H0l4Qu3+",
+      "homeAddress": "Barrio Profesionales, Mz. 20, Lote 15",
+      "neighborhood": "Barrio Profesionales",
+      "city": "Salta",
+      "zip": "4401"
+    }
+  ],
+  "comitions": []
 }
