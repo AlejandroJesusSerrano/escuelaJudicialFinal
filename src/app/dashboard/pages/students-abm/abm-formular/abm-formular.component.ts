@@ -2,13 +2,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
-import { Student } from '../students-abm.component';
+import { Student } from '../models';
 
 @Component({
   selector: 'app-abm-formular',
   templateUrl: './abm-formular.component.html',
   styleUrls: ['./abm-formular.component.scss']
 })
+
 export class AbmFormularComponent implements OnInit {
 
   nameControl = new FormControl('', [

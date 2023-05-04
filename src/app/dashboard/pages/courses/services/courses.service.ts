@@ -65,88 +65,83 @@ export class CoursesService {
       })
   }
 
-takeCourses(): Observable < Course[] > {
-  this.courses$.next(COURSES_MOCK);
-  return this.courses$.asObservable();
-}
+  takeCourses(): Observable<Course[]> {
+    this.courses$.next(COURSES_MOCK);
+    return this.courses$.asObservable();
+  }
 
-createCourse(payload: CreateCoursePayload): Observable < Course[] > {
-  this.courses$
-    .pipe(
-      take(1)
-    )
-    .subscribe({
-      next: (courses) => {
-        this.courses$.next([
-          ...courses,
-          {
-            id: courses.length + 1,
-            ...payload,
-          },
-        ]);
-      },
-      complete: () => { },
-      error: () => { }
-    });
+  createCourse(payload: CreateCoursePayload): Observable<Course[]> {
+    this.courses$
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (courses) => {
+          this.courses$.next([
+            ...courses,
+            {
+              id: courses.length + 1,
+              ...payload,
+            },
+          ]);
+        },
+        complete: () => { },
+        error: () => { }
+      });
 
-  return this.courses$.asObservable();
+    return this.courses$.asObservable();
 
-}
+  }
 
-editCourse(courseId: number, update: Partial<Course>): Observable < Course[] > {
-  this.courses$
-    .pipe(
-      take(1)
-    )
-    .subscribe({
-      next: (courses) => {
+  editCourse(courseId: number, update: Partial<Course>): Observable<Course[]> {
+    this.courses$
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (courses) => {
 
-        const coursesEdited = courses.map((course) => {
-          if (course.id === courseId) {
-            return {
-              ...course,
-              ...update,
+          const coursesEdited = courses.map((course) => {
+            if (course.id === courseId) {
+              return {
+                ...course,
+                ...update,
+              }
+            } else {
+              return course;
             }
-          } else {
-            return course;
-          }
-        })
+          })
 
-        this.courses$.next(coursesEdited)
-      },
-      complete: () => { },
-      error: () => { }
-    });
-  return this.courses$.asObservable()
-};
+          this.courses$.next(coursesEdited)
+        },
+        complete: () => { },
+        error: () => { }
+      });
+    return this.courses$.asObservable()
+  };
 
-deleteCourse(courseId: number): Observable < Course[] > {
-  this.courses$
-    .pipe(
-      take(1)
-    )
-    .subscribe({
-      next: (courses) => {
+  deleteCourse(courseId: number): Observable<Course[]> {
+    this.courses$
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (courses) => {
 
-        const coursesEdited = courses.filter((course) => course.id !== courseId)
+          const coursesEdited = courses.filter((course) => course.id !== courseId)
 
-        this.courses$.next(coursesEdited)
-      },
-      complete: () => { },
-      error: () => { }
-    });
-  return this.courses$.asObservable()
-};
+          this.courses$.next(coursesEdited)
+        },
+        complete: () => { },
+        error: () => { }
+      });
+    return this.courses$.asObservable()
+  };
 
-takeCourseById(id: number): Observable < Course | undefined > {
-  return this.courses$.asObservable()
-    .pipe(
-      map((courses) => courses.find((c) => c.id === id))
-    )
-<<<<<<< HEAD
-}
-=======
-    }
->>>>>>> 95f87df44017a614ea7755eafaaa0f232aa7da99
-
+  takeCourseById(id: number): Observable<Course | undefined> {
+    return this.courses$.asObservable()
+      .pipe(
+        map((courses) => courses.find((c) => c.id === id))
+      )
+  }
 }

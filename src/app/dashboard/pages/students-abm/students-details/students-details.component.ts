@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StudentsService } from '../services/students.service';
-import { Student } from '../students-abm.component';
+import { Student } from '../models';
 import { Location } from '@angular/common';
 
 

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Student } from 'src/app/dashboard/pages/students-abm/students-abm.component';
+import { Student } from 'src/app/dashboard/pages/students-abm/models';
 
 
 @Pipe({
