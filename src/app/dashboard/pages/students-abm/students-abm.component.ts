@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AbmFormularComponent } from './abm-formular/abm-formular.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from './services/students.service'
 import { Student } from './models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-students-abm',
@@ -13,13 +14,22 @@ import { Student } from './models';
 })
 
 export class StudentsAbmComponent {
-  
-  @ViewChild(MatTable, { static: true }) table!: MatTable<any>;
-
-  displayedColumns: string[] = ['id', 'completeName', 'register_date', 'email', 'course', 'address', 'city', 'delete'];
 
   dataSource = new MatTableDataSource<Student>();
 
+  displayedColumns: string[] = [
+    'id',
+    'completeName',
+    'register_date',
+    'email',
+    'course',
+    'address',
+    'city',
+    'delete'
+  ];
+
+  students$: any;
+  
   applyFilter(ev: Event): void {
 
     const inputValue = (ev.target as HTMLInputElement).value;
@@ -33,13 +43,22 @@ export class StudentsAbmComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private studentsService: StudentsService,
-    ) { 
+    ) { }
 
-      this.studentsService.takeStudents()
-        .subscribe((students) => {
-          this.dataSource.data = students;
-        });
+    private studentsSubscription: Subscription = new Subscription();
 
+    ngOnInit(){
+      this.studentsService.students.subscribe({
+        next: (students) => {
+          this.dataSource.data = students
+        }
+      })
+      
+      this.studentsService.getStudents()
+    }
+
+    ngOnDestroy(): void {
+      this.studentsSubscription.unsubscribe();
     }
 
     goToStudentDetails(studentId: number): void {
@@ -48,14 +67,9 @@ export class StudentsAbmComponent {
       })
     }
 
-  deleteStudent(studentId: number): void {
+  deleteStudent(student: number): void {
 
-    const index = this.dataSource.data.findIndex(student => student.id === studentId);
-
-    if (index !== -1) {
-
-      this.dataSource.data.splice(index, 1)[0];
-      this.dataSource.data = [...this.dataSource.data];
+    this.studentsService.deleteStudent(student.id)
 
     };
   };

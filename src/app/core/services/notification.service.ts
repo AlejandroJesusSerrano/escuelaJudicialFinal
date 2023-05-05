@@ -23,4 +23,14 @@ export class NotificationService {
   showMsg(msg: string){
     this.message$.next(msg);
   };
+
+  showErrorMsg(msg: string){
+    Swal.fire ({
+      title: 'Error',
+      text: `${msg}`,
+      icon: 'error',
+      confirmButtonColor: '#f44336',
+      iconColor: '#f44336'
+    })
+  };
 }

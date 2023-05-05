@@ -51,6 +51,7 @@
       "course_detail": "Cursos de actualización y formación en diversas materias que hacen al ejercicio y el entendimiento de la Justicia."
     }
   ],
+
   "students": [
     {
       "id": 1,
@@ -89,5 +90,6 @@
       "zip": "4401"
     }
   ],
-  "comitions": []
+  
+  "inscriptions": []
 }

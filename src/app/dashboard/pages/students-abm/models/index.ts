@@ -5,9 +5,20 @@ export interface Student {
     email: string;
     password: string;
     register_date: Date;
-    course: string;
     homeAddress: string;
     city: string;
     neighborhood: string;
     zip: string;
 };
+
+export interface CreateStudentPayload {
+    name: string;
+    last_name: string;
+    email: string;
+    password: string;
+    register_date: Date;
+    homeAddress: string;
+    city: string;
+    neighborhood: string;
+    zip: string;
+}
